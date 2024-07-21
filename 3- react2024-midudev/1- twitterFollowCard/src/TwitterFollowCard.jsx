@@ -1,10 +1,6 @@
 import { useState } from 'react'
 
-export function TwitterFollowCard ({
-  children,
-  userName = 'unkonown',
-  initialIsFollowing
-}) {
+export function TwitterFollowCard ({ children, userName = 'unkonown', initialIsFollowing }) {
   // const imageSrc = `https://unavatar.io/midudev/${userName}`
   // const userNam3 = `@${userName}` -> para no modificar/mutar la prop
   const [isFollowing, setIsFollowing] = useState(initialIsFollowing)

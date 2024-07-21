@@ -1,3 +1,6 @@
+/* * {
+  border: 1px solid red;
+} */
 .tw-followCard {
   display: flex;
   align-items: center;
@@ -5,6 +8,14 @@
   font-size: .8rem;
   justify-content: space-between;
 }
+
+/*.tw-followCard aside {
+  display: flex;
+  border: 1px solid blue;
+  justify-content: center;
+  align-items: center;
+  width: 147px;
+}*/
 
 /* .tw-followCard + .tw-followCard {
   margin-top: 8px;
@@ -54,7 +65,7 @@
 
 .tw-followCard-text {
   display: block;
-}
+}                                       
 .tw-followCard-button.is-following:hover {
   background-color: rgb(255, 0, 0, 0.178);
   color: red;
