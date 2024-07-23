@@ -25,5 +25,3 @@ export function WinnerModal ({ winner, resetGame }) {
     </section>
   )
 }
-
-// {winner !== null && (
