@@ -5,7 +5,6 @@ import { useCatFact } from './hooks/useCatFact.js'
 export function App () {
   const { fact, refreshFact } = useCatFact()
   const { imageUrl } = useCatImage({ fact })
-  console.log(imageUrl)
 
   const handleClick = async () => {
     refreshFact()
@@ -29,7 +28,7 @@ export function App () {
       {imageUrl && (
         <img
           src={imageUrl}
-          alt={`Image extracted using the first rhee words for ${fact}`}
+          alt={`Image extracted using the first rhee words for <h1>${fact}</h1>`}
         />
       )}
     </main>

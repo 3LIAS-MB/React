@@ -33,6 +33,11 @@ const FollowMouse = () => {
   }, [enabled]);
 
   // 'document' no existe en el servidor -> se lo usa en un efecto
+  
+  // El método toggle se usa para alternar el estado de algo.
+  // En este contexto, se utiliza para agregar o 
+  // quitar una clase CSS de un elemento del DOM,
+  // dependiendo de si la clase ya está presente o no.
   useEffect(() => {
     document.body.classList.toggle("no-cursor", enabled);
     return () => {

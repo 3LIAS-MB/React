@@ -1,7 +1,7 @@
 import { id } from 'prelude-ls'
 import { useEffect, useState } from 'react'
 
-const CAT_PREFIX_IMAGE_URL = 'https://cataas.com/cat/says/'
+const CAT_PREFIX_IMAGE_URL = 'https://cataas.com'
 
 // custom hook -> se pueden usar todos los  hooks de react dentro de él, empieza con
 // la palabra 'use' para identificarlo. es como una caja negra porque no necesitamos
@@ -20,7 +20,6 @@ export function useCatImage ({ fact }) {
 
     const threeFirstWords = fact.split(' ', 3).join(' ')
     // const threeFirstWord = fact.split(' ')[0].slice(0, 3).join(' ')
-    // console.log(threeFirstWord); 
 
     fetch(`https://cataas.com/cat/says/${threeFirstWords}?size=50&color=red&json=true`)
       .then(res => res.json())
@@ -31,6 +30,5 @@ export function useCatImage ({ fact }) {
       })
   }, [fact])
 
-  console.log(`${CAT_PREFIX_IMAGE_URL}`)
   return { imageUrl: `${CAT_PREFIX_IMAGE_URL}${imageUrl}` }
 }
