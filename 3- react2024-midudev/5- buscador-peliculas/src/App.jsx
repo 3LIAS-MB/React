@@ -49,6 +49,8 @@ function App() {
   // 3) No depender del DOM
   const handleChange = (event) => {
     const newSearch = event.target.value;
+    // El estado es asincrono por lo 
+    // updateSearch(event.target.value)
     updateSearch(newSearch);
     debouncedGetMovies(newSearch);
   };

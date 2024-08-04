@@ -3,13 +3,47 @@ import { cartReducer, cartInitialState } from "../reducer/cart";
 
 // 1. Crear contexto
 export const CartContext = createContext();
-// useRedecer -> es un hook que nos permite manejar el estado de una manera escalable
-// utilizando el patrón de reduccion. Se basa en que recibe en una funcion el estado
-// actual y la accion que tiene que hacer (cartReducer), y como segundo parametro el
-// estado inicial (cartInitialState) 
 
-// [state, dispatch] -> el primer parametro es el estado y como segundo parametro
-// tenemos el 'dispatch' es la encargada de enviar las acciones al 'reducer' 
+// El hook useReducer en React es una alternativa a useState para gestionar el estado en
+// componentes funcionales. Se utiliza principalmente cuando tienes una lógica de estado
+// compleja que involucra múltiples subvalores o cuando el siguiente estado depende del
+//  anterior. Es similar a la función reduce en JavaScript y se inspira en el patrón de
+// manejo de estado de Redux.
+
+// -> const [state, dispatch] = useReducer(reducer, initialState, init);
+
+// 1. reducer: Una función que define cómo se debe actualizar el estado. Toma
+// dos argumentos, el estado actual y una acción, y devuelve el nuevo estado.
+
+/*const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+};*/
+
+// 2. initialState: El estado inicial del componente. Puede ser
+// cualquier valor, como un objeto, número, cadena, etc.
+
+/* const initialState = { count: 0 }; */
+
+// 3. init (opcional): Una función que se puede utilizar para establecer el estado 
+// inicial perezosamente. Se invoca con initialState y devuelve el estado inicial.
+
+/*const init = (initialCount) => {
+  return { count: initialCount };
+};*/
+
+// 'state' es el estado actual del componente. Es un objeto que contiene todas las
+// propiedades que el reductor gestiona. Cada vez que el reductor procesa una 
+// acción y devuelve un nuevo estado, state se actualiza con este valor.
+
+// dispatch es una función que se utiliza para enviar acciones al reductor. Cuando se llama a dispatch
+// con una acción, React ejecuta el reductor y actualiza el estado en función de la acción enviada.
 
 // ¿Vale la pena quitar el estado y usar un useReducer para esto?
 // Sí, porque ahora extrajimos la logica en una funcion totalmente separada.
@@ -17,10 +51,10 @@ export const CartContext = createContext();
 // Con el useState el problema que el estado está dentro del componente, la logica
 // de actualización está dentro y por lo tanto cuesta más. Es intesante usar
 // 'useReducer' cuando se tiene muchos useState, es decir, estados fragmentados
-// la función 'dispatch envio/despacho' es la encargada de neviar las acciones a reducer
-function useCartReducer() { 
+
+function useCartReducer() {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
-  console.log(state)
+
   // Funciones de acción para el carrito de compras
   const addToCart = (product) =>
     dispatch({

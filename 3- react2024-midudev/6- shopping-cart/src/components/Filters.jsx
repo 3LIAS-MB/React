@@ -10,7 +10,6 @@ export function Filters() {
 
   // trae los productos filtrados
   const { filters, setFilters } = useFilters();
-  console.log(filters);
 
   // Esto no sirve para utilizarlo como 'index' (key)
   // en algo que se está iterando, porque se podria estar
@@ -28,6 +27,8 @@ export function Filters() {
       minPrice: event.target.value,
     }));
   };
+
+  console.log(filters)
 
   const handleChangeCategory = (event) => {
     setFilters((prevState) => ({

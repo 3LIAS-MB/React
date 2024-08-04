@@ -4,6 +4,7 @@
       "URL CON CATEGORIA": "https://dummyjson.com/products",
       "id": 168,
       "title": "Charger SXT RWD",
+      "category": "laptos",
       "price": 32999.99,
       "quantity": 3,
       "total": 98999.97,
@@ -21,6 +22,7 @@
     {
       "id": 183,
       "title": "Green Oval Earring",
+      "category": "laptos",
       "price": 24.99,
       "quantity": 5,
       "total": 124.94999999999999,
@@ -29,6 +31,7 @@
     {
       "id": 100,
       "title": "Apple Airpods",
+      "category": "laptos",
       "price": 129.99,
       "quantity": 5,
       "total": 649.95,
@@ -37,6 +40,7 @@
     {
       "id": 144,
       "title": "Cricket Helmet",
+      "category": "laptos",
       "price": 44.99,
       "quantity": 4,
       "total": 179.96,
@@ -45,6 +49,7 @@
     {
       "id": 124,
       "title": "iPhone X",
+      "category": "smarthphone",
       "price": 899.99,
       "quantity": 4,
       "total": 3599.96,
@@ -53,6 +58,7 @@
     {
       "id": 148,
       "title": "Golf Ball",
+      "category": "smarthphone",
       "price": 9.99,
       "quantity": 4,
       "total": 39.96,
@@ -61,6 +67,7 @@
     {
       "id": 122,
       "title": "iPhone 6",
+      "category": "smarthphone",
       "price": 299.99,
       "quantity": 3,
       "total": 899.97,
@@ -69,6 +76,7 @@
     {
       "id": 110,
       "title": "Selfie Lamp with iPhone",
+      "category": "smarthphone",
       "price": 14.99,
       "quantity": 5,
       "total": 74.95,
@@ -77,6 +85,7 @@
     {
       "id": 98,
       "title": "Rolex Submariner Watch",
+      "category": "smarthphone",
       "price": 13999.99,
       "quantity": 1,
       "total": 13999.99,
@@ -85,6 +94,7 @@
     {
       "id": 125,
       "title": "Oppo A57",
+      "category": "smarthphone",
       "price": 249.99,
       "quantity": 5,
       "total": 1249.95,
