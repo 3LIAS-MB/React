@@ -74,14 +74,14 @@
   opacity: 1;
 }
 
+.tw-followCard-stopFollow {
+  display: none;
+}
+
 .tw-followCard-button.is-following:hover .tw-followCard-text {
   display: none;
 }
 
 .tw-followCard-button.is-following:hover .tw-followCard-stopFollow {
   display: block;
-}
-
-.tw-followCard-stopFollow {
-  display: none;
 }
