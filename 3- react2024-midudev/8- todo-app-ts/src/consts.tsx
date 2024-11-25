@@ -4,3 +4,19 @@ export const TODO_FILTERS = {
     COMPLETED: 'completed'
 } as const
 // 'const' es para solo lectura en typescript
+// es decir, no se podrá modificar el objeto
+
+export const FILTERS_BUTTONS = {
+    [TODO_FILTERS.ALL]: {
+        literal: 'Todos',
+        href: `/?filter=${TODO_FILTERS.ALL}`
+    },
+    [TODO_FILTERS.ACTIVE]: {
+        literal: 'Activos',
+        href: `/?filter=${TODO_FILTERS.ACTIVE}`
+    },
+    [TODO_FILTERS.COMPLETED]: {
+        literal: 'Completados',
+        href: `/?filter=${TODO_FILTERS.COMPLETED}`
+    }
+} as const
