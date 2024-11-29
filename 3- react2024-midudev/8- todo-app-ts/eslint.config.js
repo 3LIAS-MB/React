@@ -23,15 +23,15 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
     },
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/style-prop-object': 'off', // Desactiva la regla para estilos en línea
+      
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-      
     },
   },
 );

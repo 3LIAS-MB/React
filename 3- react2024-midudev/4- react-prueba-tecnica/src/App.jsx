@@ -10,15 +10,6 @@ export function App () {
     refreshFact()
   }
 
-  // useEffect(() => {
-  //     async function getRandomFact () {
-  //         const res = await fetch(CAT_ENDPOINT_RANDOM_FACT)
-  //         const json = await res.json()
-  //         setFact(json.fact)
-  //     }
-  //     getRandomFact()
-  // }, [])
-
   return (
     <main>
       <h1>App de gatitos</h1>

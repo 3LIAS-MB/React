@@ -9,7 +9,7 @@ export function useCatFact() {
   // getRandomFact().then(setFact) -> "a veces es mala practica"
   };
 
-  // efecto para recuperar la cita al cargar la página
+  // para cargar por primera vez
   useEffect(refreshFact, []);
 
   return { fact, refreshFact };

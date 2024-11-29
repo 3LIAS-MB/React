@@ -31,17 +31,13 @@ export function Cart() {
       <input id={cartCheckboxId} type="checkbox" hidden/>
 
       <aside className="cart">
-        <ul>
+        <ul className="sc">
           {cart.map((product) => (
             <CartItem
               key={product.id}
               addToCart={() => addToCart(product)}
+              // "prop spreading" o "destructuración de props"
               {...product}
-              
-              // 'bind' es una funcion que te permite asignarle el valor 'this'
-              // que tu quieras, devuelve la misma funcion pero con el valor
-              // especificado de this y los argumentos q hayamos querido
-              // addToCart={addToCart.bind(this, product)}
             />
           ))}
         </ul>

@@ -1,4 +1,3 @@
-import { id } from 'prelude-ls'
 import { useEffect, useState } from 'react'
 
 const CAT_PREFIX_IMAGE_URL = 'https://cataas.com'

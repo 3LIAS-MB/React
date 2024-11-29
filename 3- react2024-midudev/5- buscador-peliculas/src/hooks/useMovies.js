@@ -1,11 +1,19 @@
-// el 'useCallBack()' ES LO MISMO que el useMemo() pero
-// pensado para funciones, y por debajo usa 'useMemo()'
-// -> Te permite simplificar la sintaxis.
+// useCallback: Memoriza una función para que no se vuelva a crear en cada renderizado.
+// useMemo: Memoriza el resultado de una computación.
+
+// Usamos 'useCallback' para memorizar funciones y 'useMemo' para valores calculados.
+// - 'useCallback' es útil para funciones que se pasan como dependencia o prop.
+// - 'useMemo' es ideal para memorizar datos derivados o cálculos costosos.
+
+// Ejemplo de useCallback:
+// const memoizedFunction = useCallback(() => doSomething(), [dependency]);
+
+// Ejemplo de useMemo:
+// const memoizedValue = useMemo(() => expensiveComputation(), [dependency]);
+
 import { useState, useRef, useMemo, useCallback } from "react";
 import { searchMovies } from "../services/movies";
 
-// Custom hook -> Extrae logica del componente
-// se convierten en una caja negra
 export function useMovies({ search, sort }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -13,16 +21,9 @@ export function useMovies({ search, sort }) {
   const [, setError] = useState(null);
   const previousSearch = useRef(search);
 
-  // useMemo() -> Es para memorizar computaciones que hemos hecho que queremos evitar
-  // que se hagan a no ser que cambien las dependencias que nosotros le indicamos
-  // useMemo toma una función (que devuelve el valor a memorizar) y un array de dependencias.
-
-  // const getMovies = useMemo(() => {
-  //   return async ({ search }) => {
-  //     if (search === previousSearch.current) return;
-
-  // Ya no hace falta que le pasemos un callback, sino que
-  // le pasamos directamente la función que queremos memorizar
+  // 'useCallback()' es un hook diseñado para memorizar funciones, evitando que se recreen en cada renderizado.
+  // Aunque internamente se asemeja a 'useMemo()', está optimizado para funciones.
+  // Es útil cuando una función se pasa como dependencia o prop para prevenir renderizados innecesarios.
   const getMovies = useCallback(async ({ search }) => {
     if (search === previousSearch.current) return;
     try {
@@ -34,15 +35,20 @@ export function useMovies({ search, sort }) {
     } catch (e) {
       setError(e.message);
     } finally {
-      // entra de todas formas
+      // entra de todas formas,
       // haya o no un error
       setLoading(false);
     }
   }, []);
 
-  // localeCompare()
+  // -> 'useMemo()' memoriza el resultado de una computación para evitar recalcularlo en cada renderizado.
+  // Se ejecuta solo si las dependencias especificadas cambian.
+  // Es ideal para cálculos costosos o listas derivadas.
+  // useMemo toma una función (que devuelve el valor a memorizar) y un array de dependencias.
+
+  // -> localeCompare()
   // Se utiliza para comparar dos cadenas de texto de acuerdo con las reglas
-  // de ordenamiento específicas del idioma y configuración regiona
+  // de ordenamiento específicas del idioma y configuración regional
   // Este método devuelve un número que indica si una cadena de texto viene
   // antes, después o es igual a otra cadena de texto en el orden de clasificación.
 
@@ -50,10 +56,8 @@ export function useMovies({ search, sort }) {
   // de idioma para configurar el idioma que se usará en la comparación.
   // 2) options (opcional): Un objeto con propiedades que configuran las
   // reglas de comparación (como sensitivity, ignorePunctuation, etc.).
+  
   // -> string1.localeCompare(string2, locales, options)
-
-  // Si es una funcion preferiblemente usamos useCallback y si es un valor,
-  // como en este caso, usamos 'useMemo()'
   const sortedMovies = useMemo(() => {
     return sort
       ? // operador ternario ' : ? '

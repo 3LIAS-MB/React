@@ -7,7 +7,7 @@ export const CartContext = createContext();
 // El hook useReducer en React es una alternativa a useState para gestionar el estado en
 // componentes funcionales. Se utiliza principalmente cuando tienes una lógica de estado
 // compleja que involucra múltiples subvalores o cuando el siguiente estado depende del
-//  anterior. Es similar a la función reduce en JavaScript y se inspira en el patrón de
+// anterior. Es similar a la función reduce en JavaScript y se inspira en el patrón de
 // manejo de estado de Redux.
 
 // -> const [state, dispatch] = useReducer(reducer, initialState, init);
@@ -51,7 +51,6 @@ export const CartContext = createContext();
 // Con el useState el problema que el estado está dentro del componente, la logica
 // de actualización está dentro y por lo tanto cuesta más. Es intesante usar
 // 'useReducer' cuando se tiene muchos useState, es decir, estados fragmentados
-
 function useCartReducer() {
   const [state, dispatch] = useReducer(cartReducer, cartInitialState);
 

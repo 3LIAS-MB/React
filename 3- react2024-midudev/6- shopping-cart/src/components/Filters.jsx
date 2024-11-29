@@ -11,13 +11,17 @@ export function Filters() {
   // trae los productos filtrados
   const { filters, setFilters } = useFilters();
 
-  // Esto no sirve para utilizarlo como 'index' (key)
-  // en algo que se está iterando, porque se podria estar
-  // creando un nuevo ID o puede se malenteder (explayar)
+  // No debe usarse como 'key' en una lista iterada.
+  // Esto se debe a que 'useId' genera un ID único para cada renderizado
+  // del componente, lo que puede causar problemas si el orden de los elementos
+  // cambia dinámicamente o si los componentes se vuelven a montar.
 
-  // Esto no seria la ID de un elemento, sino del
-  // orden de llamada dentro del componente
-  // Es perfecto para este tipo de ID, es lo ideal.
+  // Los IDs generados por 'useId' son únicos dentro del contexto del componente
+  // y no están pensados para identificar datos o elementos en una lista iterada.
+  // En cambio, sirven para asociar etiquetas HTML con controles de formulario
+  // (por ejemplo, 'label' y 'input') de manera accesible y confiable.
+
+  // Es perfecto para este tipo de uso: generar IDs únicos para controles individuales.
   const minPriceFilterId = useId();
   const categoryFilterId = useId();
 
@@ -28,7 +32,7 @@ export function Filters() {
     }));
   };
 
-  console.log(filters)
+  console.log(filters);
 
   const handleChangeCategory = (event) => {
     setFilters((prevState) => ({

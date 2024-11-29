@@ -22,6 +22,7 @@ export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo, onTo
             />
             <label htmlFor="">{title}</label>
             <button
+                title='button'
                 type='submit'
                 className='destroy'
                 onClick={() => {

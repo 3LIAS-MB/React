@@ -12,10 +12,3 @@ export default function SearchPage ({ routeParams }) {
         <h1>Has buscado {routeParams.query}</h1>
     )
 }
-
-// Validación de props
-SearchPage.propTypes = {
-    routeParams: PropTypes.shape({
-        query: PropTypes.string.isRequired
-    }).isRequired
-};

@@ -30,4 +30,3 @@ export function FiltersProvider({ children }) {
     </FiltersContext.Provider>
   );
 }
-// Consumir el contexto

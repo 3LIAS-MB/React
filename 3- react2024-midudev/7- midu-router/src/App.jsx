@@ -47,16 +47,15 @@ function App() {
       {/* {currentPath === "/" && <HomePage />}
       {currentPath === "/about" && <AboutPage />} */}
 
-      {/* <Router
-        routes={appRoutes} defaultComponent={Page404}/> */}
-
-      {/*fallback por si queremos mostrar algo mientras carga*/}
+      {/* El componente Suspense en React sirve para manejar cargas asíncronas, 
+      como la importación dinámica de componentes, mostrando un elemento  
+      temporal (definido en fallback) mientras estos componentes terminan de cargar */}
       <Suspense fallback={null}>
         <Router routes={appRoutes} defaultComponent={Page404}>
           <Route path="/" Component={LazyHomePage} />
           <Route path="/about" Component={LazyAboutPage} />
         </Router>
-      </Suspense>
+      </Suspense> 
     </main> 
   );
 }

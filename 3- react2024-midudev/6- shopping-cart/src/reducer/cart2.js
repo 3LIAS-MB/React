@@ -12,6 +12,8 @@ export const updateLocalStorage = state => {
 }
 
 const UPDATE_STATE_BY_ACTION = {
+
+  // Propiedades calculadas de objetos -> clave calculada
   [CART_ACTION_TYPES.ADD_TO_CART]: (state, action) => {
     const { id } = action.payload
     const productInCartIndex = state.findIndex(item => item.id === id)
@@ -55,12 +57,14 @@ const UPDATE_STATE_BY_ACTION = {
     updateLocalStorage(newState)
     return newState
   },
+
   [CART_ACTION_TYPES.REMOVE_FROM_CART]: (state, action) => {
     const { id } = action.payload
     const newState = state.filter(item => item.id !== id)
     updateLocalStorage(newState)
     return newState
   },
+  
   [CART_ACTION_TYPES.CLEAR_CART]: () => {
     updateLocalStorage([])
     return []

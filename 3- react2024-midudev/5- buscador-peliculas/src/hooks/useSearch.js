@@ -1,11 +1,11 @@
 // useRef es un hook que te permite crear una referencia mutable que persiste
-// durante todo el ciclo de vida de tu componente (entre entre rendes), es util
-// para guardar cualquier valor que puedas mutar, como un identificador, un elemento
+// durante todo el ciclo de vida de tu componente (entre rendes), es util para
+// guardar cualquier valor que puedas mutar, como un identificador, un elemento
 // del DOM, contador, etc y que cada vez que cambia no vuelve a renderizar el contentente
 import { useState, useEffect, useRef } from "react";
 
 export function useSearch() {
-  const [search, updateSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [error, setError] = useState(null);
   const isFirstInput = useRef(true);
 
@@ -22,7 +22,7 @@ export function useSearch() {
       setError("No se puede buscar una palabra vacia");
       return;
     }
-    if (search.match(/^\d+$/)) {
+    if (search.match(/^\d+$/)) { // regexs
       setError("No se puede buscar una pelicula con un número");
       return;
     }
@@ -34,5 +34,5 @@ export function useSearch() {
     setError(null);
   }, [search]);
 
-  return { search, updateSearch, error };
+  return { search, setSearch, error };
 }

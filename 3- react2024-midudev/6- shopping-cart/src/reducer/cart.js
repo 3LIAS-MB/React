@@ -1,3 +1,4 @@
+
 // export const CART_ACTION_TYPES = {
 //   ADD_TO_CART: "ADD_TO_CART",
 //   REMOVE_FROM_CART: "REMOVE_FROM_CART",
@@ -42,6 +43,7 @@ export const cartReducer = (state, action) => {
       if (productInCartIndex >= 0) {
         // 👀 una forma sería usando structuredClone  
         // para hacer una copia PROFUNDA del array
+        
         // const newState = structuredClone(state)
         // newState[productInCartIndex].quantity += 1
 
@@ -56,7 +58,7 @@ export const cartReducer = (state, action) => {
 
         //   return item
         // })
-
+ 
         // ⚡ usando el spread operator y slice
         const newState = [
           // para copiar todos los elementos desde el inicio del  
@@ -68,6 +70,9 @@ export const cartReducer = (state, action) => {
           },
           ...state.slice(productInCartIndex + 1),
         ];
+
+        console.log('XDDDDDDDDD')
+        console.log(state[productInCartIndex])
 
         updateLocalStorage(newState);
         return newState;  

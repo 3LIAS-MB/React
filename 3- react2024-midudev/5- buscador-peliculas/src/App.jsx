@@ -5,37 +5,34 @@ import { useSearch } from "./hooks/useSearch.js";
 import { Movies } from "./components/Movies.jsx";
 import debounce from "just-debounce-it";
 
-
 function App() {
   const [sort, setSort] = useState(false);
 
-  const { search, updateSearch, error } = useSearch();    
-  const { movies, loading, getMovies } = useMovies({ search, sort });
+  const { search, setSearch, error } = useSearch();
+  const { movies, getMovies, loading } = useMovies({ search, sort });
 
-  
   const debouncedGetMovies = useCallback(
+    // Toma dos parámetros: La función a ejecutar
+    // y el tiempo de espera en milisegundos
     debounce((search) => {
       getMovies({ search });
     }, 300),
     [getMovies]
   );
 
-  // -> Forma no controlada
-  // 1) Es decir, dependemos del DOM
-  // 2) Midu recomienda esta porque suele ser más facil,
-  // optimo, menos problemas y aprendes más JS
+  // Forma no controlada
+  // 1) Depende directamente del DOM para obtener valores de los campos.
+  // 2) Suele ser más sencilla de implementar y presenta menos problemas en algunos casos.
+  // 3) Permite practicar más con el uso de JavaScript puro.
   const handleSubmit = (event) => {
-    // const value = inputRef.current.value
+  // const value = inputRef.current.value
 
-    // const inputEl = inputRef.current
-    // const value = inputEl.value
+  // const fields = new window.FormData(event.target)
+  // const query = fields.get('query')
 
-    // const fields = new window.FormData(event.target)
-    // const query = fields.get('query')
+  // -> Para varios inputs
+  // const fields = Object.fromEntries(new window.FormData(event.target))
 
-    // -> Para varios inputs
-    // const fields = Object.fromEntries(new window.FormData(event.target))
-    // console.log(fields)
     event.preventDefault();
     getMovies({ search });
   };
@@ -43,21 +40,17 @@ function App() {
   const handleSort = () => {
     setSort(!sort);
   };
-  // -> Forma controlada
-  // 1) Hay más posibilidades para validar un formulario
-  // 2) Codigo más recogido
-  // 3) No depender del DOM
+  // -> Forma controlada:
+  // 1) Permite validar y gestionar mejor los datos del formulario mediante el estado.
+  // 2) El código es más organizado y fácil de seguir.
+  // 3) No depende directamente del DOM, lo que facilita su integración con React.
   const handleChange = (event) => {
     const newSearch = event.target.value;
-    // El estado es asincrono por lo 
+    // El estado es asincrono por lo
     // updateSearch(event.target.value)
-    updateSearch(newSearch);
+    setSearch(newSearch);
     debouncedGetMovies(newSearch);
   };
-
-  // useEffect(() => {
-  //   console.log("new getMovies received");
-  // }, [getMovies]);
 
   return (
     <div className="page">
