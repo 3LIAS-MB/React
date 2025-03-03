@@ -1,4 +1,3 @@
-
 // export const CART_ACTION_TYPES = {
 //   ADD_TO_CART: "ADD_TO_CART",
 //   REMOVE_FROM_CART: "REMOVE_FROM_CART",
@@ -8,7 +7,7 @@
 // update localStorage with state for cat
 export const updateLocalStorage = (state) => {
   // lo transforma en String y luego lo almacena bajo la clave 'cart'
-  window.localStorage.setItem("cart", JSON.stringify(state)); 
+  window.localStorage.setItem("cart", JSON.stringify(state));
 };
 
 // useRedecer -> es un hook que nos permite manejar el estado de una manera escalable
@@ -21,14 +20,14 @@ export const updateLocalStorage = (state) => {
 
 // PERSISTENCIA
 export const cartInitialState =
-// Si no hay nada devuelve null o cualquier valor falsy
+  // Si no hay nada devuelve null o cualquier valor falsy
   JSON.parse(window.localStorage.getItem("cart")) || [];
 
 export const cartReducer = (state, action) => {
   // console.log(state)
   // console.log(action.payload)
   // console.log(action.type)
-  
+
   // En el 'type' le pasamos el string para identificar la accion que
   // tenemos que hacer, y en el 'payload' le pasamos todo el objeto
   // que necesitamos para actualizar el estado (hay veces q es opcional)
@@ -41,9 +40,9 @@ export const cartReducer = (state, action) => {
       const productInCartIndex = state.findIndex((item) => item.id === id);
 
       if (productInCartIndex >= 0) {
-        // 👀 una forma sería usando structuredClone  
+        // 👀 una forma sería usando structuredClone
         // para hacer una copia PROFUNDA del array
-        
+
         // const newState = structuredClone(state)
         // newState[productInCartIndex].quantity += 1
 
@@ -58,12 +57,12 @@ export const cartReducer = (state, action) => {
 
         //   return item
         // })
- 
+
         // ⚡ usando el spread operator y slice
         const newState = [
-          // para copiar todos los elementos desde el inicio del  
+          // para copiar todos los elementos desde el inicio del
           // array state hasta justo antes de productInCartIndex.
-        ...state.slice(0, productInCartIndex),
+          ...state.slice(0, productInCartIndex),
           {
             ...state[productInCartIndex],
             quantity: state[productInCartIndex].quantity + 1,
@@ -71,11 +70,11 @@ export const cartReducer = (state, action) => {
           ...state.slice(productInCartIndex + 1),
         ];
 
-        console.log('XDDDDDDDDD')
-        console.log(state[productInCartIndex])
+        console.log("XDDDDDDDDD");
+        console.log(state[productInCartIndex]);
 
         updateLocalStorage(newState);
-        return newState;  
+        return newState;
       }
 
       // En el caso de que no estuviese en el carrito
@@ -93,7 +92,7 @@ export const cartReducer = (state, action) => {
 
     case "REMOVE_FROM_CART": {
       const { id } = actionPayload;
-      const newState = state.filter(item => item.id !== id)
+      const newState = state.filter((item) => item.id !== id);
       updateLocalStorage(newState);
       return newState;
     }

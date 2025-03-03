@@ -32,8 +32,6 @@ export function Filters() {
     }));
   };
 
-  console.log(filters);
-
   const handleChangeCategory = (event) => {
     setFilters((prevState) => ({
       ...prevState,

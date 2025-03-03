@@ -31,7 +31,7 @@ export const CartContext = createContext();
 
 /* const initialState = { count: 0 }; */
 
-// 3. init (opcional): Una función que se puede utilizar para establecer el estado 
+// 3. init (opcional): Una función que se puede utilizar para establecer el estado
 // inicial perezosamente. Se invoca con initialState y devuelve el estado inicial.
 
 /*const init = (initialCount) => {
@@ -39,7 +39,7 @@ export const CartContext = createContext();
 };*/
 
 // 'state' es el estado actual del componente. Es un objeto que contiene todas las
-// propiedades que el reductor gestiona. Cada vez que el reductor procesa una 
+// propiedades que el reductor gestiona. Cada vez que el reductor procesa una
 // acción y devuelve un nuevo estado, state se actualiza con este valor.
 
 // dispatch es una función que se utiliza para enviar acciones al reductor. Cuando se llama a dispatch
